@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Frontend Mentor | [Challenge Name Here]</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: hsl(240, 78%, 98%);
+            margin: 0;
+        }
+        
+        .main-wrapper {
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+        }
+        
+        .wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .top {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header {
+            flex-grow: 1;
+            font-size: 32px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: hsl(233, 13%, 49%);
+            margin-bottom: 19px;
+        }
+        
+        .toggle-bar {
+            flex-grow: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 300px;
+            margin-bottom: 30px;
+        }
+        
+        .toggle-bar span {
+            font-size: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: hsl(234, 14%, 74%);
+        }
+        
+        .toggle-button {
+            overflow: hidden;
+            padding: 2px 2px;
+            width: 60px;
+            height: 28px;
+            border-radius: 40px;
+            background-image: linear-gradient(hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+        }
+        
+        .circle {
+            border-radius: 50%;
+            height: 23px;
+            width: 23px;
+            background-color: white;
+            transition: 350ms;
+        }
+        
+        .circle.active {
+            transform: translateX(140%);
+        }
+        /* //top done */
+        
+        .bottom {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cards-wrapper {
+            flex-grow: 1;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .cards-wrapper span {
+            display: block;
+        }
+        
+        .card1 {
+            flex-grow: 0;
+            background-color: white;
+            border-radius: 10px;
+            text-align: center;
+            width: 310px;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0px 0px 32px 0.3px rgb(219, 219, 219);
+            margin-bottom: 25px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        
+        .card2 {
+            flex-grow: 0;
+            background-color: white;
+            border-radius: 10px;
+            text-align: center;
+            width: 310px;
+            height: 350px;
+            display: flex;
+            z-index: 1;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0px 0px 32px 0.3px rgb(219, 219, 219);
+            margin-bottom: 25px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        
+        .card3 {
+            flex-grow: 0;
+            background-color: white;
+            border-radius: 10px;
+            text-align: center;
+            width: 310px;
+            height: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            align-self: center;
+            box-shadow: 0px 0px 32px 0.3px rgb(219, 219, 219);
+            margin-bottom: 25px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        
+        .plan {
+            font-size: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: hsl(233, 13%, 49%);
+        }
+        
+        .price {
+            font-size: 45px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            color: hsl(232, 13%, 33%);
+        }
+        
+        .features {
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            color: hsl(233, 13%, 49%);
+        }
+        
+        .learn-more-button {
+            font-size: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: white;
+            height: 38px;
+            width: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            text-align: center;
+            background-image: linear-gradient(hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+        }
+        
+        @media (min-width: 0px) and (max-width: 425px) {
+            .card1 {
+                height: 450px;
+                padding: 30px 0px;
+            }
+            .card2 {
+                height: 450px;
+                padding: 30px 0px;
+            }
+            .card3 {
+                height: 450px;
+                padding: 30px 0px;
+            }
+        }
+        
+        @media (max-width:768px) {
+            .card1 {
+                height: 450px;
+                padding: 30px 0px;
+            }
+            .card-outside {
+                width: 100%;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+            .card2 {
+                height: 450px;
+                padding: 30px 0px;
+            }
+            .card3 {
+                height: 450px;
+                padding: 30px 0px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .features {
+                font-size: 14px;
+            }
+            .card1 {
+                height: 370px;
+                padding: 20px 0px;
+                margin-bottom: 0px;
+            }
+            .card2 {
+                height: 370px;
+                padding: 20px 0px;
+                margin-bottom: 0px;
+            }
+            .card3 {
+                height: 370px;
+                padding: 20px 0px;
+                margin-bottom: 0px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-wrapper">
+        <div class="wrapper">
+            <div class="top">
+                <div class="header">
+                    Our Pricing
+                </div>
+                <div class="toggle-bar">
+                    <span>Annualy</span>
+                    <div id="toggle-button" class="toggle-button">
+                        <div id="circle" class="circle">
+
+                        </div>
+
+                    </div>
+                    <span>Monthly</span>
+                </div>
+
+            </div>
+            <div class="bottom">
+                <div class="cards-wrapper">
+                    <div class="card-outside">
+
+
+                        <div class="card1">
+                            <span class="plan">Basic</span>
+                            <span id="basicprice" class="price">$19.99</span>
+                            <div style="background-color:hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+                            <span class="features">500 GB Storage</span>
+                            <div style="background-color:hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+                            <span class="features">2 Users Allowed</span>
+                            <div style="background-color: hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+                            <span class="features">Sends up to 3 GB</span>
+                            <div style="background-color: hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+                            <div class="learn-more-button">
+
+                                Learn More
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="card-outside">
+                        <div class="card2">
+                            <span class="plan">Professional</span>
+                            <span id="professionalprice" class="price">$24.99</span>
+                            <div style="background-color: hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+
+                            <span class="features">1 TB Storage</span>
+                            <div style="background-color: hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+
+                            <span class="features">5 Users Allowed</span>
+                            <div style="background-color: hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+
+                            <span class="features"> Sends up to 10 GB</span>
+                            <div style="background-color: hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+
+                            <div class="learn-more-button">
+
+                                Learn More
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-outside">
+                        <div class="card3">
+                            <span class="plan">Master</span>
+                            <span id="masterprice" class="price">$39.99</span>
+                            <div style="background-color: hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+
+                            <span class="features">2 TB Storage</span>
+                            <div style="background-color: hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+
+                            <span class="features">10 Users Allowed</span>
+                            <div style="background-color: hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+
+                            <span class="features">Sends up to 20 GB</span>
+                            <div style="background-color: hsl(235, 33%, 86%);width: 250px;height:0.2px;border-radius: 10px;" class="break"></div>
+
+                            <div class="learn-more-button">
+
+                                Learn More
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+<script>
+    var togglebutton = document.getElementById('toggle-button'),
+        circle = document.getElementById('circle'),
+        basicprice = document.getElementById('basicprice'),
+        professionalprice = document.getElementById('professionalprice')
+    masterprice = document.getElementById('masterprice');
+
+
+    circle.addEventListener('click', function(event) {
+
+        circle.classList.toggle('active');
+
+        if (basicprice.innerText == '$199.99') {
+            basicprice.innerText = '';
+            basicprice.innerText = '$19.99';
+
+        } else {
+            basicprice.innerText = '';
+            basicprice.innerText = '$199.99';
+
+        }
+        if (professionalprice.innerText == '$249.99') {
+            professionalprice.innerText = '';
+            professionalprice.innerText = '$24.99';
+
+        } else {
+            professionalprice.innerText = '';
+            professionalprice.innerText = '$249.99';
+
+        }
+        if (masterprice.innerText == '$399.99') {
+            masterprice.innerText = '';
+            masterprice.innerText = '$39.99';
+
+        } else {
+            masterprice.innerText = '';
+            masterprice.innerText = '$399.99';
+
+        }
+
+
+
+
+
+
+
+    })
+</script>
+
+</html>
+
+<!-- 
+Our Pricing
+  Annually
+  Monthly
+
+  Basic
+  &dollar;19.99
+  &dollar;199.99
+  500 GB Storage
+  2 Users Allowed
+  Send up to 3 GB
+  Learn More
+
+  Professional
+  &dollar;24.99
+  &dollar;249.99
+  1 TB Storage
+  5 Users Allowed
+  Send up to 10 GB
+  Learn More
+
+  Master
+  &dollar;39.99
+  &dollar;399.99
+  2 TB Storage
+  10 Users Allowed
+  Send up to 20 GB
+  Learn More -->
